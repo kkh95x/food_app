@@ -1,0 +1,62 @@
+name: food_app
+description: A new Flutter project.
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.18.0 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_svg: ^1.1.6
+
+dev_dependencies:
+  flutter_lints: ^2.0.0
+  flutter_test:
+    sdk: flutter
+
+flutter:
+
+  uses-material-design: true
+
+  assets:
+  
+    - assets/images/png/backgrond.png
+    - assets/images/png/post_image.png
+    - assets/images/png/new_post.png
+
+    - assets/images/svg/my_profile.svg
+    - assets/images/svg/my_profile_selected.svg
+    - assets/images/svg/recipes.svg
+    - assets/images/svg/recipes_selected.svg
+    - assets/images/svg/refrigerator.svg
+    - assets/images/svg/refrigerator_selected.svg
+    - assets/images/svg/storage_tips.svg
+    - assets/images/svg/storage_tips_selected.svg
+    - assets/images/svg/logo.svg
+    - assets/images/svg/notifaction.svg
+    - assets/images/svg/tomato.svg
+    - assets/images/svg/list_filter.svg
+    - assets/images/svg/edit.svg
+
+    - assets/images/svg/delete.svg
+    - assets/images/svg/potato.svg
+    - assets/images/svg/like.svg
+    - assets/images/svg/love.svg
+    - assets/images/svg/share.svg
+    - assets/images/svg/comint.svg
+    - assets/images/svg/add_recipes.svg
+    - assets/images/svg/add_tips.svg
+
+
+    
+
+
+
+  fonts:
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/Roboto.ttf
