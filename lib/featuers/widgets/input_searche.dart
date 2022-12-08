@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:food_app/core/resource/assest_manager.dart';
 import 'package:food_app/core/resource/string_manager.dart';
@@ -8,7 +7,8 @@ import 'package:food_app/core/resource/values_manager.dart';
 import 'package:food_app/featuers/widgets/input_text_fild.dart';
 
 class InputTextSearch extends StatelessWidget {
-  const InputTextSearch({super.key});
+  const InputTextSearch({super.key, required this.onChanged});
+  final void Function(String) onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class InputTextSearch extends StatelessWidget {
         Expanded(
           child: MyTextFilde(
             hint: StringManager.search,
-            onChanged: (p0) {},
+            onChanged: onChanged,
           ),
         ),
         const SizedBox(

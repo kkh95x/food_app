@@ -12,7 +12,7 @@ class MyButton extends StatelessWidget {
       this.onPressed});
   double? hight;
   double? width;
-  String name;
+  final String name;
   Color? btnColor;
   Color? txtColor;
   void Function()? onPressed;

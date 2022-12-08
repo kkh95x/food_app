@@ -2,64 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:food_app/core/resource/assest_manager.dart';
 import 'package:food_app/core/resource/color_manager.dart';
-import 'package:food_app/core/resource/string_manager.dart';
 import 'package:food_app/core/resource/values_manager.dart';
 import 'package:food_app/featuers/food/model/food_model.dart';
-import 'package:food_app/featuers/widgets/input_searche.dart';
-import 'package:food_app/featuers/widgets/list_catogery.dart';
-
-class MyRefrigeratorView extends StatelessWidget {
-  const MyRefrigeratorView({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: AppPading.p5),
-        child: Column(children: [
-          const SizedBox(
-            height: AppSize.s25,
-          ),
-          const InputTextSearch(),
-          const SizedBox(
-            height: AppSize.s10,
-          ),
-          getCatogeryRow(),
-          const SizedBox(
-            height: AppSize.s10,
-          ),
-          SizedBox(
-              height: AppSize.s350,
-              child: ListView.separated(
-                  itemBuilder: (context, index) {
-                    return RefrigeratorItemWidget(
-                      data: lisRefrigeratorItems[index],
-                    );
-                  },
-                  separatorBuilder: (context, index) => const SizedBox(
-                        height: AppSize.s20,
-                      ),
-                  itemCount: lisRefrigeratorItems.length))
-        ]),
-      ),
-    );
-  }
-
-  SizedBox getCatogeryRow() {
-    return SizedBox(
-        height: AppSize.s50,
-        child: CatogeryList(
-          isAddCatogry: false,
-          catogeryList: const [
-            StringManager.groceries,
-            StringManager.dairyProducts,
-            StringManager.meatProducts,
-            StringManager.all
-          ],
-          onTap: (int index) {},
-        ));
-  }
-}
 
 class RefrigeratorItemWidget extends StatelessWidget {
   const RefrigeratorItemWidget({super.key, required this.data});
