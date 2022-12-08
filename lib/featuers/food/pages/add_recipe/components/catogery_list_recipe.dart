@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/core/resource/string_manager.dart';
 import 'package:food_app/core/resource/values_manager.dart';
-import 'package:food_app/featuers/widgets/list_catogery.dart';
+import 'package:food_app/featuers/food/widgets/list_catogery.dart';
 
 class ListOfCatogeryRecipes extends StatelessWidget {
   const ListOfCatogeryRecipes({super.key});

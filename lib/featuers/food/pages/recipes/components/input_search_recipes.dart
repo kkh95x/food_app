@@ -1,9 +1,9 @@
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:food_app/featuers/widgets/input_searche.dart';
+import 'package:food_app/featuers/food/widgets/input_searche.dart';
 
-class InputSearchRecipes extends StatelessWidget {
-  const InputSearchRecipes({super.key});
+class RecipesInputSearch extends StatelessWidget {
+  const RecipesInputSearch({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -7,7 +7,7 @@ import 'package:food_app/core/resource/values_manager.dart';
 import 'package:food_app/featuers/food/pages/add_items/components/form_add_new_item.dart';
 
 import 'package:food_app/featuers/food/pages/add_items/components/list_catogery_h.dart';
-import 'package:food_app/featuers/widgets/title_text_widget.dart';
+import 'package:food_app/featuers/food/widgets/title_text_widget.dart';
 
 class AddItemsView extends StatelessWidget {
   const AddItemsView({super.key});

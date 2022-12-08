@@ -8,7 +8,7 @@ import 'package:food_app/featuers/food/pages/add_recipe/components/catogery_list
 import 'package:food_app/featuers/food/pages/add_recipe/components/form_add_new_recipe.dart';
 import 'package:food_app/featuers/food/pages/add_recipe/components/image_piker_new_recipe.dart';
 
-import 'package:food_app/featuers/widgets/title_text_widget.dart';
+import 'package:food_app/featuers/food/widgets/title_text_widget.dart';
 
 class AddRecipeView extends StatelessWidget {
   const AddRecipeView({super.key});

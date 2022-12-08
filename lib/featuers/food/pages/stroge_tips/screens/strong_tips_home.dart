@@ -6,8 +6,8 @@ import 'package:food_app/featuers/food/model/tip_model.dart';
 import 'package:food_app/featuers/food/pages/stroge_tips/components/catogery_list_tips.dart';
 import 'package:food_app/featuers/food/pages/stroge_tips/components/input_search_tips.dart';
 import 'package:food_app/featuers/food/pages/stroge_tips/components/item_for_list_tips.dart';
-import 'package:food_app/featuers/widgets/list_catogery.dart';
-import 'package:food_app/featuers/widgets/title_text_widget.dart';
+import 'package:food_app/featuers/food/widgets/list_catogery.dart';
+import 'package:food_app/featuers/food/widgets/title_text_widget.dart';
 
 class StrogeTipsHome extends StatelessWidget {
   const StrogeTipsHome({super.key});

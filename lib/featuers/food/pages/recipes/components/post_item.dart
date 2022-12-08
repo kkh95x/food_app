@@ -5,9 +5,9 @@ import 'package:food_app/core/resource/color_manager.dart';
 import 'package:food_app/core/resource/values_manager.dart';
 import 'package:food_app/featuers/food/model/post_model.dart';
 
-class PostItem extends StatelessWidget {
+class RecipesPostItem extends StatelessWidget {
   final PostModel postModel;
-  const PostItem({super.key, required this.postModel});
+  const RecipesPostItem({super.key, required this.postModel});
 
   @override
   Widget build(BuildContext context) {

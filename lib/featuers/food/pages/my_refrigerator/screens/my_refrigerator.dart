@@ -7,7 +7,7 @@ import 'package:food_app/featuers/food/pages/my_refrigerator/components/catogery
 import 'package:food_app/featuers/food/pages/my_refrigerator/components/input_text_search_refrigerator.dart';
 import 'package:food_app/featuers/food/pages/my_refrigerator/components/item_list_refrigerator.dart';
 
-import 'package:food_app/featuers/widgets/title_text_widget.dart';
+import 'package:food_app/featuers/food/widgets/title_text_widget.dart';
 
 class MyRefrigeratorView extends StatelessWidget {
   const MyRefrigeratorView({super.key});

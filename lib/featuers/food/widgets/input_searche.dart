@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:food_app/core/resource/assest_manager.dart';
 import 'package:food_app/core/resource/string_manager.dart';
 import 'package:food_app/core/resource/values_manager.dart';
-import 'package:food_app/featuers/widgets/input_text_fild.dart';
+import 'package:food_app/featuers/food/widgets/input_text_fild.dart';
 
 class InputTextSearch extends StatelessWidget {
   const InputTextSearch({super.key, required this.onChanged});

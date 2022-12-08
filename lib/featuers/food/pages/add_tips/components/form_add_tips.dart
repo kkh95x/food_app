@@ -3,8 +3,8 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:food_app/core/resource/string_manager.dart';
 import 'package:food_app/core/resource/values_manager.dart';
-import 'package:food_app/featuers/widgets/button.dart';
-import 'package:food_app/featuers/widgets/input_text_fild.dart';
+import 'package:food_app/featuers/food/widgets/button.dart';
+import 'package:food_app/featuers/food/widgets/input_text_fild.dart';
 
 class AddTipsForm extends StatelessWidget {
   const AddTipsForm({super.key});

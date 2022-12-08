@@ -4,7 +4,7 @@ import 'package:food_app/core/resource/string_manager.dart';
 import 'package:food_app/core/resource/values_manager.dart';
 import 'package:food_app/featuers/food/pages/add_tips/components/catogery_list_add_tips.dart';
 import 'package:food_app/featuers/food/pages/add_tips/components/form_add_tips.dart';
-import 'package:food_app/featuers/widgets/title_text_widget.dart';
+import 'package:food_app/featuers/food/widgets/title_text_widget.dart';
 
 class AddTipesView extends StatelessWidget {
   const AddTipesView({super.key});
