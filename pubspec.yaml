@@ -9,9 +9,15 @@ environment:
   sdk: '>=2.18.0 <3.0.0'
 
 dependencies:
+  cloud_firestore: ^4.2.0
+  firebase_storage: ^11.0.8
   flutter:
     sdk: flutter
+  flutter_riverpod: ^2.1.1
   flutter_svg: ^1.1.6
+  image_picker: ^0.8.6
+  intl: ^0.18.0
+  rxdart: ^0.27.7
 
 dev_dependencies:
   flutter_lints: ^2.0.0
@@ -23,7 +29,7 @@ flutter:
   uses-material-design: true
 
   assets:
-  
+
     - assets/images/png/backgrond.png
     - assets/images/png/post_image.png
     - assets/images/png/new_post.png
@@ -50,11 +56,6 @@ flutter:
     - assets/images/svg/comint.svg
     - assets/images/svg/add_recipes.svg
     - assets/images/svg/add_tips.svg
-
-
-    
-
-
 
   fonts:
     - family: Roboto

@@ -17,8 +17,8 @@ class StringManager {
   static const String dairyProducts = "Dairy products";
   static const String meatProducts = "Meat products";
   static const String name = "Name";
-  static const String purchaseDate = "Purchase Date";
-  static const String expirationDate = "Expiration Date";
+  static const String purchaseDate = "Purchase Date d/m/y";
+  static const String expirationDate = "Expiration Date d/m/y";
 
   static const String quantity = "Quantity ";
 

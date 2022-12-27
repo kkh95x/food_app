@@ -1,16 +1,16 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/cupertino.dart';
-import 'package:food_app/core/resource/string_manager.dart';
-import 'package:food_app/featuers/food/pages/add_items/screens/add_new_item.dart';
-import 'package:food_app/featuers/food/pages/my_refrigerator/screens/my_refrigerator.dart';
-import 'package:food_app/featuers/food/pages/recipes/screens/recipes.dart';
-import 'package:food_app/featuers/food/pages/stroge_tips/screens/stroge_tips.dart';
+import 'package:food_app/featuers/recips/presentation/screens/recipes_hom_screen.dart';
+import 'package:food_app/featuers/referigerator/presentation/screens/add_new_item.dart';
+import 'package:food_app/featuers/referigerator/presentation/screens/my_refrigerator.dart';
+import 'package:food_app/featuers/storage_tips/presentation/screens/stroge_tips_home_screen.dart';
 import 'package:food_app/featuers/profile/profile.dart';
 
-List<Widget> listScreens = const [
-  MyRefrigeratorView(),
-  RecipesView(),
-  StrogeTipsView(),
-  MyProfileView(),
-  AddItemsView(),
+List<Widget> listScreens = [
+  const MyRefrigeratorScreen(),
+  const RecipesHomeScreen(),
+  const StrogeTipsHomeScreen(),
+  const MyProfileView(),
+  const AddItemsScreen(),
+  const MyRefrigeratorScreen(),
 ];

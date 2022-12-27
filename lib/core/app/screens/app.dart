@@ -1,4 +1,7 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:food_app/core/app/model/icon_data.dart';
 import 'package:food_app/core/app/model/screen_data.dart';
@@ -8,6 +11,11 @@ import 'package:food_app/core/resource/assest_manager.dart';
 import 'package:food_app/core/resource/color_manager.dart';
 import 'package:food_app/core/resource/theme_manager.dart';
 import 'package:food_app/core/resource/values_manager.dart';
+import 'package:food_app/featuers/recips/presentation/controller/recipes_controller.dart';
+import 'package:food_app/featuers/referigerator/data/firebase_referigerator_repository.dart';
+import 'package:food_app/featuers/storage_tips/presentation/controller/tips_controller.dart';
+
+import '../../../featuers/referigerator/presentation/controller/referigerator_controller.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -16,31 +24,25 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: AppTheme.themeData,
-      home: const HomePage(),
+      home: HomePage(),
     );
   }
 }
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+final indexPageBottomNavigationProvider = StateProvider<int>((ref) {
+  return 0;
+});
 
+class HomePage extends ConsumerWidget {
   @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  int _curentIdexPage = 0;
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: ColorManager.background,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
-        onPressed: (() {
-          setState(() {
-            _curentIdexPage = 4;
-          });
+        onPressed: (() async {
+          ref.read(indexPageBottomNavigationProvider.notifier).state = 4;
         }),
         backgroundColor: ColorManager.secondary,
         child: const Icon(
@@ -69,18 +71,20 @@ class _HomePageState extends State<HomePage> {
                     SvgPicture.asset(ImageAssets.notifaction)
                   ],
                 ),
-                Expanded(child: listScreens[_curentIdexPage]),
+                Expanded(
+                    child: listScreens[
+                        ref.watch(indexPageBottomNavigationProvider)]),
               ],
             ),
           ),
         ),
       ),
       bottomNavigationBar: CustomBottomNavigationBar(
-        currentIndex: _curentIdexPage,
+        currentIndex: ref.watch(indexPageBottomNavigationProvider),
         onTap: (p0) {
-          setState(() {
-            _curentIdexPage = p0;
-          });
+          ref.read(indexPageBottomNavigationProvider.notifier).state = p0;
+          ref.read(indexTipsProvider.notifier).state = 0;
+          ref.read(indexPageProvider.notifier).state = 0;
         },
       ),
     );
