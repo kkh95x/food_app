@@ -19,7 +19,7 @@ class FirebaseRecipsRepository extends RecipsRepostory {
   @override
   Future<List<RecipeModel>> getAllRecips() async {
     return await recipsCollection
-        .orderBy("dateAdded", descending: true)
+        // .orderBy("dateAdded", descending: true)
         .get()
         .then((querySnapshot) => querySnapshot.docs
             .map((e) => RecipeModel.fromJson(e.data()))
@@ -28,7 +28,7 @@ class FirebaseRecipsRepository extends RecipsRepostory {
    @override
   Future<List<RecipeModel>> getRecips() async {
     return await recipsCollection
-        .orderBy("dateAdded", descending: true)
+        // .orderBy("dateAdded", descending: true)
         .get()
         .then((querySnapshot) => querySnapshot.docs
             .map((e) => RecipeModel.fromJson(e.data()))

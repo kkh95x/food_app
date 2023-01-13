@@ -14,7 +14,7 @@ class FirebaseTipRepository extends TipRepository {
   @override
   Future<List<TipModel>> getAllTips() async {
     return await referigeratorCollection
-        .orderBy("dateAdded", descending: true)
+        // .orderBy("dateAdded", descending: true)
         .get()
         .then((querySnapshot) =>
             querySnapshot.docs.map((e) => TipModel.fromJson(e.data())).toList());
