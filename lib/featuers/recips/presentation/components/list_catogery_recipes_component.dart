@@ -13,22 +13,25 @@ class RecipesListOfCatogeryComponent extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final recipsProvider = ref.watch(recipProvider);
     return 
-    FutureBuilder(
-      future: recipsProvider.getCatogeryList(),
-      builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          return CatogeryList(
-            isAddCatogry: false,
-            onTap: (p0) {
-              
+    SizedBox(
+      height: 50,
+      child: FutureBuilder(
+        future: recipsProvider.getCatogeryList(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return CatogeryList(
+              isAddCatogry: false,
+              onTap: (p0) {
+                
 
-           },
-            catogeryList: snapshot.data!,
-           );
-          
-        }
-        return const CircularProgressIndicator();
-      },
+             },
+              catogeryList: snapshot.data!,
+             );
+            
+          }
+          return const CircularProgressIndicator();
+        },
+      ),
     );
   }
 }
