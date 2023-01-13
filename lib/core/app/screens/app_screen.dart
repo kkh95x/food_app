@@ -5,7 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:food_app/core/app/model/icon_data.dart';
 import 'package:food_app/core/app/model/screen_data.dart';
-import 'package:food_app/core/app/widgets/bottom_navigation_bar.dart';
+import 'package:food_app/core/app/widgets/bottom_navigation_bar_component.dart';
 
 import 'package:food_app/core/resource/assest_manager.dart';
 import 'package:food_app/core/resource/color_manager.dart';
@@ -79,7 +79,7 @@ class HomePage extends ConsumerWidget {
           ),
         ),
       ),
-      bottomNavigationBar: CustomBottomNavigationBar(
+      bottomNavigationBar: CustomBottomNavigationBarComponent(
         currentIndex: ref.watch(indexPageBottomNavigationProvider),
         onTap: (p0) {
           ref.read(indexPageBottomNavigationProvider.notifier).state = p0;

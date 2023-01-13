@@ -3,17 +3,25 @@ import 'package:flutter/material.dart';
 import 'package:food_app/core/resource/color_manager.dart';
 import 'package:food_app/core/resource/values_manager.dart';
 
-class CatogeryList extends StatelessWidget {
+class CatogeryList extends StatefulWidget {
   final bool isAddCatogry;
   final List<String> catogeryList;
   CatogeryList(
       {Key? key,
       required this.catogeryList,
       required this.onTap,
-      required this.isAddCatogry})
+      required this.isAddCatogry,
+      this.onAddTap
+      })
       : super(key: key);
-
+  void Function()? onAddTap;
   void Function(int index) onTap;
+
+  @override
+  State<CatogeryList> createState() => _CatogeryListState();
+}
+
+class _CatogeryListState extends State<CatogeryList> {
   final ValueNotifier<int> _curentIndex = ValueNotifier<int>(0);
 
   @override
@@ -24,16 +32,19 @@ class CatogeryList extends StatelessWidget {
         return ListView.separated(
           scrollDirection: Axis.horizontal,
           itemBuilder: (context, index) {
-            return index < catogeryList.length
+            return index < widget.catogeryList.length
                 ? getItem(
-                    catogeryList[index], index == _curentIndex.value, context,
-                    (index) {
-                    onTap(index);
+                    widget.catogeryList[index], index == _curentIndex.value, context,
+                    (index) {setState(() {
+                      
+                    });
+                      
+                    widget.onTap(index);
                     _curentIndex.value = index;
                   }, index)
-                : getItemAdd(context);
+                : getItemAdd(context,widget.onAddTap);
           },
-          itemCount: catogeryList.length + (isAddCatogry ? 1 : 0),
+          itemCount: widget.catogeryList.length + (widget.isAddCatogry ? 1 : 0),
           separatorBuilder: (context, index) => const SizedBox(
             width: AppSize.s4,
           ),
@@ -63,9 +74,9 @@ class CatogeryList extends StatelessWidget {
     );
   }
 
-  Widget getItemAdd(BuildContext context) {
+  Widget getItemAdd(BuildContext context, void Function()? onTap) {
     return InkWell(
-      onTap: () {},
+      onTap: onTap,
       child: Container(
           padding: const EdgeInsets.symmetric(horizontal: AppPading.p18),
           alignment: Alignment.center,

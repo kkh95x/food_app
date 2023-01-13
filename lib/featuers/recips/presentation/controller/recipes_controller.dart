@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:food_app/featuers/recips/data/firebase_trecip_repository.dart';
 import 'package:food_app/featuers/recips/data/recip_repository.dart';
-import 'package:food_app/featuers/recips/domain/post_model.dart';
+import 'package:food_app/featuers/recips/domain/recipe_model.dart';
 
 final recipProvider = ChangeNotifierProvider<RecipsNotifier>(
-  (ref) => RecipsNotifier(recipsRepository: FirebaseRecipsRepository()),
+  (ref) => RecipsNotifier(recipsRepository: ref.watch(recipProviderRepository)),
 );
 
 class RecipsNotifier extends ChangeNotifier {
@@ -30,6 +30,17 @@ class RecipsNotifier extends ChangeNotifier {
             love: "0",
             title: title,
             descrption: description));
+  }
+
+  Future<List<String>> getCatogeryList() async {
+    return await recipsRepository.getCatogerys();
+  }
+
+  Future<void> addNewCatogery(String name) async {  
+    await recipsRepository.addNewCatogery(name);
+    notifyListeners();
+
+
   }
 }
 

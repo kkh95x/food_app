@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:food_app/core/resource/assest_manager.dart';
 import 'package:food_app/core/resource/color_manager.dart';
 import 'package:food_app/core/resource/values_manager.dart';
-import 'package:food_app/featuers/recips/domain/post_model.dart';
+import 'package:food_app/featuers/recips/domain/recipe_model.dart';
 
 class RecipesPostItemComponent extends StatelessWidget {
   final RecipeModel postModel;

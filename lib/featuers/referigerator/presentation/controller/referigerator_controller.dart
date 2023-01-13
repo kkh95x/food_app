@@ -1,14 +1,16 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:food_app/core/resource/string_manager.dart';
 
 import 'package:food_app/featuers/referigerator/data/firebase_referigerator_repository.dart';
 import 'package:food_app/featuers/referigerator/data/referigerator_repository.dart';
 import 'package:food_app/featuers/referigerator/domain/referigerator_model.dart';
+import 'package:food_app/featuers/widgets/list_catogery.dart';
 
 final referigeratorProvider = ChangeNotifierProvider<ReferigeratorNotifier>(
   (ref) => ReferigeratorNotifier(
-      referigeratorRepository: FirebaseReferigeratorRepository()),
+      referigeratorRepository: ref.watch(recipProviderReferigeratorRepository)),
 );
 
 class ReferigeratorNotifier extends ChangeNotifier {
@@ -16,16 +18,43 @@ class ReferigeratorNotifier extends ChangeNotifier {
   ReferigeratorNotifier({required this.referigeratorRepository});
 
   Future<List<RefrigeratorModel>> loadList() async {
-    return await referigeratorRepository.getAllRefrigerators();
+    if (catogery == StringManager.all && searchName == "") {
+   
+
+      return await referigeratorRepository.getAllRefrigerators();
+    } else if (catogery != StringManager.all && searchName == "") {
+
+      return await referigeratorRepository.getRefrigeratorsByCatogery(catogery);
+    } else if (catogery == StringManager.all && searchName != "") {
+
+      return await referigeratorRepository.getRefrigeratorsByName(searchName);
+    } else {
+
+      return await referigeratorRepository.getRefrigeratorsByCatogeryAndName(
+          catogery, searchName);
+    }
+  }
+
+  String catogery = "";
+  String searchName = "";
+  set setCatogery(String catogery) {
+    notifyListeners();
+    this.catogery = catogery;
+  }
+
+  set setsearchName(String searchName) {
+    notifyListeners();
+    this.searchName = searchName;
   }
 
   Future<void> createReferigerator(
-      name, svgPath, kg, purchaseDate, expirationDate) async {
+      name, svgPath, kg, purchaseDate, expirationDate, category) async {
     await referigeratorRepository.createAllRefrigerator(
         refrigeratorModel: RefrigeratorModel(
             name: name,
             svgPath: svgPath,
             kg: kg,
+            catogery: category,
             purchaseDate: purchaseDate,
             expirationDate: expirationDate));
   }

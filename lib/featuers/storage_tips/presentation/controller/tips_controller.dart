@@ -7,7 +7,7 @@ import 'package:food_app/featuers/storage_tips/data/tips_repository.dart';
 import 'package:food_app/featuers/storage_tips/domain/tip_model.dart';
 
 final tipProvider = ChangeNotifierProvider<TipNotifier>(
-  (ref) => TipNotifier(tipRepository: FirebaseTipRepository()),
+  (ref) => TipNotifier(tipRepository: ref.watch(recipProviderFirebaseTipRepository)),
 );
 
 class TipNotifier extends ChangeNotifier {

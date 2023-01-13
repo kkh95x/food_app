@@ -2,11 +2,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:food_app/core/app/screens/app.dart';
+import 'package:food_app/core/app/screens/app_screen.dart';
 import 'package:food_app/core/resource/string_manager.dart';
 
 import 'package:food_app/core/resource/values_manager.dart';
 import 'package:food_app/featuers/referigerator/presentation/controller/referigerator_controller.dart';
+import 'package:food_app/featuers/widgets/list_catogery.dart';
 import 'package:food_app/featuers/widgets/show_dialog.dart';
 
 import 'package:food_app/featuers/widgets/title_text_widget.dart';
@@ -14,7 +15,10 @@ import 'package:food_app/featuers/referigerator/presentation/components/form_add
 import 'package:food_app/featuers/referigerator/presentation/components/list_catogery_h_component.dart';
 
 class AddItemsScreen extends StatelessWidget {
-  const AddItemsScreen({super.key});
+  AddItemsScreen({super.key});
+  final _formKey = GlobalKey<FormState>();
+   String catogery = "";
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -31,37 +35,31 @@ class AddItemsScreen extends StatelessWidget {
               height: AppSize.s40,
             ),
             //list catogery
-            const ListOfCatogeryAddNewItemComponent(),
+            ListOfCatogeryAddNewItemComponent(
+              onTap: (String catory) {
+                catogery = catory;
+              },
+            ),
             const SizedBox(
               height: AppSize.s20,
             ),
             Consumer(
               builder: (context, ref, child) {
                 return FormeInputNewItemComponent(
-                  onPressed: (name, svgPath, kg, purchaseDate, expirationDate) {
-                    if (name != null &&
-                        kg != null &&
-                        expirationDate != null &&
-                        purchaseDate != null) {
-                      if (DateTime.tryParse(purchaseDate) != null &&
-                          DateTime.tryParse(expirationDate) != null) {
+                    formKey: _formKey,
+                    onPressed:
+                        (name, svgPath, kg, purchaseDate, expirationDate) {
+                      if (_formKey.currentState!.validate()) {
                         ref
                             .read(referigeratorProvider.notifier)
                             .createReferigerator(name, svgPath, kg,
-                                purchaseDate, expirationDate);
+                                purchaseDate, expirationDate,catogery);
 
                         ref
                             .read(indexPageBottomNavigationProvider.notifier)
                             .state = 0;
-                      } else {
-                        showFakeAlertDialog(context,
-                            "Purchase Date and Expiration Date: dd/mm/yyyy");
                       }
-                    } else {
-                      showFakeAlertDialog(context, "Enter name and date kvg");
-                    }
-                  },
-                );
+                    });
               },
             ),
             const SizedBox(

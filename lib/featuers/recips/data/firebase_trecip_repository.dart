@@ -1,27 +1,37 @@
 import 'dart:io';
-import 'dart:math';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:food_app/featuers/recips/data/recip_repository.dart';
-import 'package:food_app/featuers/recips/domain/post_model.dart';
+import 'package:food_app/featuers/recips/domain/recipe_model.dart';
 
 class FirebaseRecipsRepository extends RecipsRepostory {
-  final referigeratorCollection =
-      FirebaseFirestore.instance.collection("recips");
+  final recipsCollection = FirebaseFirestore.instance.collection("recips");
   final storage = FirebaseStorage.instance;
+  final catogeryCollection =
+      FirebaseFirestore.instance.collection("catogery_recips");
 
   @override
   Future<void> createRecip({required RecipeModel recipModel}) async {
-    await referigeratorCollection.add(recipModel.toMap());
+    await recipsCollection.add(recipModel.toJson());
   }
 
   @override
   Future<List<RecipeModel>> getAllRecips() async {
-    return await referigeratorCollection
+    return await recipsCollection
         .orderBy("dateAdded", descending: true)
         .get()
         .then((querySnapshot) => querySnapshot.docs
-            .map((e) => RecipeModel.fromMap(e.data()))
+            .map((e) => RecipeModel.fromJson(e.data()))
+            .toList());
+  }
+   @override
+  Future<List<RecipeModel>> getRecips() async {
+    return await recipsCollection
+        .orderBy("dateAdded", descending: true)
+        .get()
+        .then((querySnapshot) => querySnapshot.docs
+            .map((e) => RecipeModel.fromJson(e.data()))
             .toList());
   }
 
@@ -33,4 +43,19 @@ class FirebaseRecipsRepository extends RecipsRepostory {
 
     return path;
   }
+
+  @override
+  Future<List<String>> getCatogerys() async {
+    return await catogeryCollection.orderBy("timeAdd",descending: true).get().then(
+        (querySnapshot) =>
+            querySnapshot.docs.map((e) => e['name'] as String).toList());
+  }
+
+  @override
+  Future<void> addNewCatogery(String name) async {
+     await catogeryCollection.add({"name":name,"timeAdd":DateTime.now()});
+  }
+
 }
+final recipProviderRepository = Provider<RecipsRepostory>(
+  (ref) => FirebaseRecipsRepository());

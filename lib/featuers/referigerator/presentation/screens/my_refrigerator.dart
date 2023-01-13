@@ -11,11 +11,12 @@ import 'package:food_app/featuers/referigerator/presentation/controller/referige
 
 import 'package:food_app/featuers/widgets/title_text_widget.dart';
 
-class MyRefrigeratorScreen extends StatelessWidget {
-  const MyRefrigeratorScreen({super.key});
-
+class MyRefrigeratorScreen extends ConsumerWidget {
+  MyRefrigeratorScreen({super.key});
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final refProvider = ref.watch(referigeratorProvider);
+
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: AppPading.p5),
@@ -26,11 +27,19 @@ class MyRefrigeratorScreen extends StatelessWidget {
           const SizedBox(
             height: AppSize.s25,
           ),
-          const RefrigeratorInputSearchComponent(),
+          RefrigeratorInputSearchComponent(
+            onChanged: (String name) {
+              refProvider.setsearchName = name;
+            },
+          ),
           const SizedBox(
             height: AppSize.s10,
           ),
-          const RefrigeratorCatogeryListComponent(),
+          RefrigeratorCatogeryListComponent(
+            onTap: (String catogery) {
+              refProvider.setCatogery = catogery;
+            },
+          ),
           const SizedBox(
             height: AppSize.s10,
           ),
@@ -39,9 +48,10 @@ class MyRefrigeratorScreen extends StatelessWidget {
               child: Consumer(builder:
                   (BuildContext context, WidgetRef ref, Widget? child) {
                 return FutureBuilder(
-                  future: ref.watch(referigeratorProvider).loadList(),
+                  future: refProvider.loadList(),
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
+
                       List<RefrigeratorModel> listreferigerators =
                           snapshot.data as List<RefrigeratorModel>;
                       return ListView.separated(

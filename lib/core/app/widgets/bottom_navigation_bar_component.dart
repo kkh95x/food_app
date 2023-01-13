@@ -6,8 +6,8 @@ import 'package:food_app/core/app/model/icon_data.dart';
 import 'package:food_app/core/resource/color_manager.dart';
 import 'package:food_app/core/resource/values_manager.dart';
 
-class CustomBottomNavigationBar extends StatelessWidget {
-  const CustomBottomNavigationBar(
+class CustomBottomNavigationBarComponent extends StatelessWidget {
+  const CustomBottomNavigationBarComponent(
       {super.key, required this.currentIndex, required this.onTap});
   final int currentIndex;
 

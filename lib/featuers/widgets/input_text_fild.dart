@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:food_app/core/resource/color_manager.dart';
+import 'package:food_app/core/resource/string_manager.dart';
 import 'package:food_app/core/resource/values_manager.dart';
 
 class MyTextFilde extends StatelessWidget {
@@ -10,12 +11,13 @@ class MyTextFilde extends StatelessWidget {
     required this.hint,
     this.width,
     this.hight,
+     this.validator
   }) : super(key: key);
   void Function(String) onChanged;
   final String hint;
   final double? width;
   final double? hight;
-
+  final String? Function(String?)? validator;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -24,7 +26,13 @@ class MyTextFilde extends StatelessWidget {
       decoration: BoxDecoration(
           color: ColorManager.white,
           borderRadius: BorderRadius.circular(AppSize.s16)),
-      child: TextField(
+      child: TextFormField(
+        validator: validator??(value) {
+          if (value == null || value.isEmpty) {
+            return StringManager.pleaseEnterSomeText;
+          }
+          return null;
+        },
         textAlignVertical: TextAlignVertical.bottom,
         decoration: InputDecoration(
             hintText: hint,

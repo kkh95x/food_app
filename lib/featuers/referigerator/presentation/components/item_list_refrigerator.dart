@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:food_app/core/app/screens/app.dart';
+import 'package:food_app/core/app/screens/app_screen.dart';
 import 'package:food_app/featuers/referigerator/presentation/controller/referigerator_controller.dart';
 import 'package:food_app/featuers/widgets/show_dialog.dart';
 import 'package:intl/intl.dart';
@@ -24,7 +24,7 @@ class RefrigeratorItemWidget extends ConsumerWidget {
             borderRadius: BorderRadius.circular(AppSize.s16),
             color: ColorManager.white),
         child: ListTile(
-          leading: getTomatoWidget(data.svgPath),
+          leading: getTomatoWidget(ImageAssets.tomato),
           title: Text(
             data.name,
             style: Theme.of(context).textTheme.titleLarge,

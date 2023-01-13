@@ -16,6 +16,7 @@ class InputTextSearch extends StatelessWidget {
       children: [
         Expanded(
           child: MyTextFilde(
+           
             hint: StringManager.search,
             onChanged: onChanged,
           ),

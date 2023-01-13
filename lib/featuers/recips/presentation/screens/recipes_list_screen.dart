@@ -31,6 +31,7 @@ class RecipesListScreen extends StatelessWidget {
           const SizedBox(
             height: AppSize.s10,
           ),
+          
           const RecipesListOfCatogeryComponent(),
           const SizedBox(
             height: AppSize.s10,

@@ -37,10 +37,16 @@ class StringManager {
   static const String corn = "Corn";
 
   static const String pepper = "Pepper";
+    static const String pleaseEnterSomeText = 'Please enter some text';
+
 
   static const String tomato = "Tomato";
   static const String shareRecipeWithCommunity = "Share recipe with community";
   static const String addNewRecipe = "Add New Recipe";
   static const String addTips = "Add Tip";
   static const String addStrongTips = "Add Strong Tips";
+  static const String addNewCatogery = "Add New Catogery...";
+  static const String add = "Add";
+
+
 }

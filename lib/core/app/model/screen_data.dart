@@ -7,10 +7,10 @@ import 'package:food_app/featuers/storage_tips/presentation/screens/stroge_tips_
 import 'package:food_app/featuers/profile/profile.dart';
 
 List<Widget> listScreens = [
-  const MyRefrigeratorScreen(),
+   MyRefrigeratorScreen(),
   const RecipesHomeScreen(),
   const StrogeTipsHomeScreen(),
   const MyProfileView(),
-  const AddItemsScreen(),
-  const MyRefrigeratorScreen(),
+   AddItemsScreen(),
+   MyRefrigeratorScreen(),
 ];

@@ -1,31 +1,18 @@
-import 'dart:convert';
+import 'package:flutter/foundation.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-class TipModel {
-  String title;
-  String description;
-  TipModel({
-    required this.title,
-    required this.description,
-  });
+part 'tip_model.freezed.dart';
+part 'tip_model.g.dart';
 
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'title': title,
-      'description': description,
-      "dateAdded": DateTime.now()
-    };
-  }
+@freezed
+class TipModel with _$TipModel {
+  
+  factory TipModel({
+   required String title,
+ required String description,
+  })=_TipModel;
 
-  factory TipModel.fromMap(Map<String, dynamic> map) {
-    return TipModel(
-      title: map['title'] as String,
-      description: map['description'] as String,
-    );
-  }
+  
 
-  String toJson() => json.encode(toMap());
-
-  factory TipModel.fromJson(String source) =>
-      TipModel.fromMap(json.decode(source) as Map<String, Object>);
+factory TipModel.fromJson(Map<String, Object?> json) => _$TipModelFromJson(json);
 }

@@ -18,6 +18,8 @@ class AddTipsFormComponent extends StatelessWidget {
           padding: const EdgeInsets.symmetric(
               horizontal: AppPading.p30, vertical: AppPading.p12),
           child: MyTextFilde(
+           
+        
             hint: StringManager.name,
             onChanged: (d) {
               name = d;
@@ -28,6 +30,7 @@ class AddTipsFormComponent extends StatelessWidget {
           padding: const EdgeInsets.symmetric(
               horizontal: AppPading.p30, vertical: AppPading.p12),
           child: MyTextFilde(
+           
             hint: StringManager.details,
             onChanged: (p0) {
               details = p0;
